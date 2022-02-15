@@ -1,0 +1,54 @@
+header {
+    margin-top: 1em;
+}
+
+.profile-picture {
+    width: 30%;
+}
+
+.profile-picture > img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.profile-summary {
+    width: 70%;
+    margin-left: 3em;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-summary > h1 {
+    margin: 0;
+}
+
+.profile-stats {
+    display: flex;
+    margin-top: 1em;
+    column-gap: 1em;
+}
+
+.profile-bio {
+    margin-top: 1em;
+}
+
+@media screen and (max-width: 480px) {
+
+    .profile-picture {
+        width: 25%;
+    }
+
+    .profile-summary {
+        width: 75%;
+        margin-left: 1.5em;
+    }
+
+    .profile-summary > h1 {
+        font-size: x-large;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        row-gap: .5em;
+    }
+}
