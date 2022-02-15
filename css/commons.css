@@ -1,0 +1,67 @@
+html {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+}
+
+nav {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 0.5em;
+}
+
+header {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1em;
+}
+
+
+.nav-logo {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: xx-large;
+}
+
+.nav-profilename {
+    display: flex;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 900px) {
+    .container {
+      width: 80%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .container {
+      width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    h1 {
+        font-size: x-large;
+    }
+
+    .container {
+      width: 100%;
+    }
+
+}
