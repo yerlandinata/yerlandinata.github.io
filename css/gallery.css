@@ -76,7 +76,7 @@
         justify-content: space-between;
         color: black;
         font-weight: unset;
-        background-color: white;
+        background-color: transparent;
         margin-bottom: 1em;
     }
 }
