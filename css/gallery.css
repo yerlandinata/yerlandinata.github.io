@@ -1,0 +1,22 @@
+.gallery-grid {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 5%;
+    row-gap: 1em;
+    flex-wrap: wrap;
+}
+
+.gallery-frame {
+    width: 30%;
+}
+
+.gallery-frame > img {
+    width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+    .gallery-frame {
+        width: 100%;
+    }
+
+}
