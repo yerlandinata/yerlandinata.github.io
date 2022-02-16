@@ -1,3 +1,30 @@
+.gallery-tablink {
+    border-top: 1px solid #c9c9c9;
+    margin-top: 1em;
+    justify-content: center;
+    column-gap: 1em;
+}
+
+.gallery-tablink > a {
+    text-decoration: none;
+    color: black;
+    padding: .5em;
+}
+
+.gallery-tablink > .active {
+    font-weight: bold;
+}
+
+.gallery-tablink > a:hover {
+    background-color: #f3f3f3;
+}
+
+.gallery-tablink > a:active {
+    background-color: #c9c9c9;  
+    color: #0099ff;
+}
+
+
 .gallery-grid {
     display: flex;
     justify-content: flex-start;
