@@ -56,6 +56,8 @@
     font-weight: bold;
     color: white;
     justify-content: center;
+    flex-direction: column;
+    row-gap: .5em;
 }
 
 .gallery-iteminfo:hover {
@@ -65,6 +67,11 @@
 
 .gallery-iteminfo img {
     width: 20px;
+}
+
+.gallery-iteminfo > span {
+    display: flex;
+    align-items: center;
 }
 
 @media screen and (max-width: 480px) {
@@ -81,7 +88,7 @@
 
     .gallery-iteminfo {
         position: relative;
-        justify-content: flex-end;
+        justify-content: space-between;
         font-weight: bold;
         color: white;
         opacity: 1;
@@ -89,6 +96,7 @@
         height: auto;
         color: black;
         font-weight: 100;
+        flex-direction: row;
     }
 
     .gallery-iteminfo:hover {
