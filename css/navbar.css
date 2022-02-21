@@ -73,3 +73,52 @@ nav {
 .nav-menudropdown a span {
     padding-right: .5em;
 }
+
+nav form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30vw;
+}
+
+nav form input {
+    border-radius: 5px;
+    border: 2px solid #c9c9c9;
+    outline: none;
+    padding-left: .5em;
+    height: 2em;
+}
+
+input + button {
+    position: absolute;
+    right: .5em;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: .3;
+}
+
+input:focus + button {
+    opacity: .8;
+}
+
+nav form input:focus {
+    border-color: #0099ff;
+    box-shadow: 0 0 5px #c9c9c9;
+}
+
+
+@media screen and (max-width: 1200px) {
+    nav form {
+        width: 25vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    nav form {
+        display: none;
+    }
+}
