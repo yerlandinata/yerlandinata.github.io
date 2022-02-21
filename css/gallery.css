@@ -65,6 +65,14 @@
     background-color: rgba(0,0,0, 0.5);
 }
 
+.gallery-iteminfo .eth-dark {
+    display: inline;
+}
+
+.gallery-iteminfo .eth-light {
+    display: none;
+}
+
 .gallery-iteminfo img {
     width: 20px;
 }
@@ -101,6 +109,14 @@
 
     .gallery-iteminfo:hover {
         background-color: transparent;
+    }
+
+    .gallery-iteminfo .eth-dark {
+        display: none;
+    }
+    
+    .gallery-iteminfo .eth-light {
+        display: inline;
     }
 
 }
