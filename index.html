@@ -1,3 +1,912 @@
-Hello world!
-Halo, dunia!
-こんにちは、世界!
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="en"><!-- begin::Head --><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+        <!--begin::Base Path (base relative path for assets of this page) -->
+        <!--end::Base Path -->
+        <title>SPT | Direktorat Jenderal Pajak</title>
+        <meta charset="UTF-8">
+        
+        <meta name="description" content="Latest updates and statistic charts">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="google" content="notranslate">
+        
+        <!--begin::Fonts -->
+        <!-- <link rel="stylesheet" type="text/css" href="index_files/font.css"> -->
+        <!--end::Fonts -->
+
+        <!--begin::Page Custom Styles(used by this page) -->
+        <link href="index_files/wizard-4.css" rel="stylesheet" type="text/css">
+        <!--end::Page Custom Styles -->
+
+        <!--begin:: Global Mandatory Vendors -->
+        <link href="index_files/perfect-scrollbar.css" rel="stylesheet" type="text/css">
+        <link href="index_files/uniform.css" rel="stylesheet" type="text/css">
+        <link href="index_files/datepicker.css" rel="stylesheet" type="text/css">
+        <!--end:: Global Mandatory Vendors -->
+        <!--begin::Page Vendors Styles(used by this page) -->
+        <!--end::Page Vendors Styles -->
+
+        <!--begin:: Global Mandatory Vendors -->
+        <!--end:: Global Mandatory Vendors -->
+
+        <!--begin:: Global Optional Vendors -->
+        <link href="index_files/select2.css" rel="stylesheet" type="text/css">
+        <link href="index_files/sweetalert2.css" rel="stylesheet" type="text/css">
+        <link href="index_files/socicon.css" rel="stylesheet" type="text/css">
+        <link href="index_files/line-awesome.css" rel="stylesheet" type="text/css">
+        <link href="index_files/flaticon.css" rel="stylesheet" type="text/css">
+        <link href="index_files/flaticon_002.css" rel="stylesheet" type="text/css">
+        <link href="index_files/all.css" rel="stylesheet" type="text/css">
+        <!--end:: Global Optional Vendors -->
+
+        <!--begin::Global Theme Styles(used by all pages) -->
+        <link href="index_files/base.css" rel="stylesheet" type="text/css">
+        <link href="index_files/typo.css" rel="stylesheet" type="text/css">
+        <link href="index_files/component.css" rel="stylesheet" type="text/css">
+        <link href="index_files/part.css" rel="stylesheet" type="text/css">
+        <link href="index_files/datatablestyle.css" rel="stylesheet" type="text/css"> 
+        <!--end::Global Theme Styles -->
+
+        <!--begin::Layout Skins(used by all pages) -->
+        <!--end::Layout Skins -->
+
+        <link href="index_files/custom.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="https://efiling.pajak.go.id/assets/favicon.ico" type="image/vnd.microsoft.icon">
+        
+        <!--PWA-->
+        <!--<link rel="manifest" th:href="@{/assets/manifest.json}"/>-->
+        <link rel="apple-touch-icon" href="https://efiling.pajak.go.id/assets/icons/icon-96x96.png">
+        <meta name="apple-mobile-web-app-status-bar" content="#212c5f">
+        <meta name="theme-color" content="#212c5f">
+    </head>
+    <!-- end::Head -->
+
+    <!-- begin::Body -->
+    <body class="kt-page--loading-enabled kt-page--fixed kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-header__topbar--mobile-on" data-new-gr-c-s-check-loaded="8.896.0" data-gr-ext-installed="">
+        <!-- begin::Page loader -->
+        <!-- end::Page Loader -->
+
+        <!-- begin:: Page -->
+        <!-- begin:: Header Mobile -->
+        <div class="top-bar-djp">
+            <button id="btn_top_menu" class="btn-djp">MENU</button>
+        </div>
+        <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+            <div class="kt-header-mobile__logo">
+                <a href=""> 
+                    <img alt="Logo" src="https://i.postimg.cc/Cdp8gPCt/DJP-wakandas.png">
+                </a>
+            </div>
+            <div class="kt-header-mobile__toolbar">
+                <div class="kt-header__topbar-item kt-header__topbar-item--search dropdown kt-hidden-desktop" id="kt_quick_search_toggle">
+                    <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,10px">
+                        <span class="kt-header__topbar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--djp">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect id="bound" x="0" y="0" width="24" height="24"></rect>
+                                    <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" id="Path-2" fill="#000000" fill-rule="nonzero" opacity="1"></path>
+                                    <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" id="Path" fill="#000000" fill-rule="nonzero"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-lg dropdown-djp">
+                        <div class="kt-quick-search kt-quick-search--inline">
+                            <form action="https://pajak.go.id/id/search/node" method="get" class="kt-quick-search__form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control kt-quick-search__input" name="keys" placeholder="Pencarian..." autocomplete="off">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </div>
+                                </div>
+                            </form>
+                            <div class="kt-quick-search__wrapper kt-scroll ps" data-scroll="true" data-height="300" data-mobile-height="200" style="height: 300px; overflow: hidden;"><div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Search -->
+                
+                <button class="btn btn-djp-mobile btn-icon" id="kt_header_mobile_toggler">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- end:: Header Mobile -->
+        
+        <div class="kt-grid kt-grid--hor kt-grid--root">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+                    <div>
+                        
+
+    
+    
+        <!-- begin:: Header -->
+        <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed " data-ktheader-minimize="on">
+            <div class="kt-header__bottom header-pajak-top">
+                <div class="kt-container">
+                    <!-- begin: Header Menu -->
+                    <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper_second" style="opacity: 1;">
+                        <div id="kt_header_menu_second" class="kt-header-menu kt-header-menu-mobile ">
+                            <ul class="kt-menu__nav ">
+                                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                    <a href=""class="kt-menu__link kt-menu__toggle">
+                                        <span class="kt-menu__link-text header-menu-top">Profil</span>
+                                        <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Overview</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Visi, Misi dan Maklumat Pelayanan</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Tugas dan Fungsi</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Logo DJP</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Struktur Organisasi</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Daftar Pejabat</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Unit Kerja</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Survei Kepuasan 2018</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                    <a href=""class="kt-menu__link kt-menu__toggle">
+                                        <span class="kt-menu__link-text header-menu-top">Peraturan</span>
+                                        <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Peraturan</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Kurs</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                    <a href=""class="kt-menu__link kt-menu__toggle">
+                                        <span class="kt-menu__link-text header-menu-top">Unduh</span>
+                                        <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Aplikasi Perpajakan</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Formulir Perpajakan</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                    <a href=""class="kt-menu__link kt-menu__toggle">
+                                        <span class="kt-menu__link-text header-menu-top">Informasi Publik</span>
+                                        <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                <a href=""class="kt-menu__link kt-menu__toggle">
+                                                    <span class="kt-menu__link-text">Daftar Informasi Publik</span>
+                                                    <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                                </a>
+                                                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
+                                                    <ul class="kt-menu__subnav">
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Daftar Informasi yang Wajib Disediakan dan Diinformasikan Secara Berkala</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Daftar Informasi yang Wajib Diumumkan Dengan Serta Merta</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Daftar Informasi yang Wajib Tersedia Setiap Saat</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                <a href=""class="kt-menu__link kt-menu__toggle">
+                                                    <span class="kt-menu__link-text">Anggaran dan Realisasi Keuangan</span>
+                                                    <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                                </a>
+                                                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
+                                                    <ul class="kt-menu__subnav">
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Daftar Isian Pelaksanaan Anggaran</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Realisasi Belanja</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Laporan Keuangan DJP</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                <a href=""class="kt-menu__link kt-menu__toggle">
+                                                    <span class="kt-menu__link-text">Transparansi Kinerja Ditjen Pajak</span>
+                                                    <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                                </a>
+                                                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
+                                                    <ul class="kt-menu__subnav">
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Rencana Strategis</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Rencana Kerja Ditjen Pajak</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Laporan Kinerja DJP</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Laporan Tahunan DJP</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link ">
+                                                                <span class="kt-menu__link-text">Realisasi Pendapatan Pajak</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link">
+                                                    <span class="kt-menu__link-text">Regulasi Informasi Publik</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link">
+                                                    <span class="kt-menu__link-text">Layanan Akses Informasi Publik</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link">
+                                                    <span class="kt-menu__link-text">Pengaduan Penyalahgunaan Wewenang</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                    <a href=""class="kt-menu__link kt-menu__toggle">
+                                        <span class="kt-menu__link-text header-menu-top">Internasional</span>
+                                        <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">APA dan MAP</span>
+                                                </a>
+                                            </li>
+                                            <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                <a href=""class="kt-menu__link kt-menu__toggle">
+                                                    <span class="kt-menu__link-text">Pertukaran Informasi</span>
+                                                    <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                                </a>
+                                                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
+                                                    <ul class="kt-menu__subnav">
+                                                        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link kt-menu__toggle">
+                                                                <span class="kt-menu__link-text">CbCR</span>
+                                                                <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                                            </a>
+                                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
+                                                                <ul class="kt-menu__subnav">
+                                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                                        <a href=""class="kt-menu__link ">
+                                                                            <span class="kt-menu__link-text">Informasi</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                                        <a href=""class="kt-menu__link ">
+                                                                            <span class="kt-menu__link-text">Pelaporan</span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                        <li class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                            <a href=""class="kt-menu__link kt-menu__toggle">
+                                                                <span class="kt-menu__link-text">EOI</span>
+                                                                <i class="kt-menu__ver-arrow fa fa-caret-down"></i>
+                                                            </a>
+                                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
+                                                                <ul class="kt-menu__subnav">
+                                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                                        <a href=""class="kt-menu__link ">
+                                                                            <span class="kt-menu__link-text">Informasi</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                                        <a href=""class="kt-menu__link ">
+                                                                            <span class="kt-menu__link-text">Pelaporan</span>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                                        <a href=""class="kt-menu__link ">
+                                                                            <span class="kt-menu__link-text">Pendaftaran</span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href=""class="kt-menu__link ">
+                                                    <span class="kt-menu__link-text">Tax Treaty</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="kt-header-toolbar">
+                            <div class="kt-quick-search" style="margin-top: 5px;">
+                                <form action="https://pajak.go.id/id/search/node" method="get" class="kt-quick-search__form">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control kt-quick-search__input" name="keys" placeholder="Pencarian..." autocomplete="off">
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="flaticon2-search-1"></i></span></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: Header Menu -->
+                </div>
+            </div>
+            <div class="kt-header__top">
+                <div class="kt-container">
+                    <!-- begin:: Brand -->
+                    <div class="kt-header__brand   kt-grid__item" id="kt_header_brand">
+                        <div class="kt-header__brand-logo">
+                            <a href="https://djponline.pajak.go.id/">
+                                <img alt="Logo" src="https://i.postimg.cc/Cdp8gPCt/DJP-wakandas.png" class="kt-header__brand-logo-default">
+                                <img alt="Logo" src="https://i.postimg.cc/Cdp8gPCt/DJP-wakandas.png" class="kt-header__brand-logo-sticky">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end:: Brand -->
+                    <!-- begin:: Header Topbar -->
+                    <div class="kt-header__topbar">
+                        <div class="kt-header__topbar kt-grid__item kt-grid__item--fluid user-djp">
+
+                            <!--begin: User bar -->
+
+                        </div>
+                    </div>
+                    <!-- end:: Header Topbar -->
+                </div>
+            </div>
+        </div>
+        <!-- end:: Header -->
+    
+
+
+                    </div>
+
+                    <div id="body-konten" class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-grid--stretch">
+                        <style>
+                            #body-konten {
+                                background: url(/assets/media/bg/gedung_djp.jpg);
+                                background-size: cover;
+                                background-position: center center;
+                            }
+                        </style>
+                        <div class="kt-container kt-body  kt-grid kt-grid--ver" id="kt_body">
+                            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+                                
+                                <!-- begin:: Content Head -->
+                                <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="padding-bottom: 0px !important;">
+                                    <div class="kt-subheader__main base-menu">
+                                        <div class="kt-header-menu-wrapper pajak menu-wrapper-djp" id="kt_header_menu_wrapper" style="opacity: 1;">
+                                            <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile menu-dashboard main-menu-djp">
+                                                <ul class="kt-menu__nav ">
+                                                    <li class="kt-menu__item">
+                                                        <a href=""class="kt-menu__link ">
+                                                            <span class="kt-menu__link-text">Arsip SPT</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true">
+                                                        <a href=""class="kt-menu__link ">
+                                                            <span class="kt-menu__link-text">Buat SPT</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-menu__item" aria-haspopup="true">
+                                                        <a href=""class="kt-menu__link ">
+                                                            <span class="kt-menu__link-text">Draft SPT</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="kt-menu__item" aria-haspopup="true">
+                                                        <a href=""class="kt-menu__link ">
+                                                            <span class="kt-menu__link-text">Bantuan</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kt-subheader__toolbar">
+                                        <div class="kt-subheader__wrapper">
+                                            
+            <a href=""> 
+                <img class="img-responsive logo-aplikasi" src="https://i.postimg.cc/Hksjgfcq/logo-efiling.png" height="80px">
+            </a>
+        
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end:: Content Head -->
+
+                                <!-- begin:: Content -->
+                                <div class="kt-content kt-grid__item kt-grid__item--fluid" style="padding: 20px; background: #EBECF1; margin-bottom: 40px; border-radius: 0 8px 8px 8px; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2), 0 3px 10px 0 rgba(0, 0, 0, .19);">
+                                    <!--Begin::Isi Konten-->
+                                    <input type="text" value="33113662-b13f-4916-984b-85b704ca3d95" name="ac" id="ac" class="form-control" style="display: none">
+                                    
+            <!--Begin::Section-->
+            <div class="row" style="position: relative">
+                <button type="button" id="btn_show_help" class="btn btn-warning btn-lg" style="color: white; font-weight: 600;">
+                    Petunjuk Pengisian &nbsp;&nbsp;&nbsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--light">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                            <path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z" id="Path-94" fill="#000000" fill-rule="nonzero" transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999) "></path>
+                        </g>
+                    </svg>
+                </button>
+                <div class="col-md-12 petunjuk help-hide">
+                    <div class="kt-portlet kt-portlet--head-sm ">
+                        <div class="kt-portlet__head" style="background: #ffb822;">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--light">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect id="bound" x="0" y="0" width="24" height="24"></rect>
+                                            <path d="M13.6855025,18.7082217 C15.9113859,17.8189707 18.682885,17.2495635 22,17 C22,16.9325178 22,13.1012863 22,5.50630526 L21.9999762,5.50630526 C21.9999762,5.23017604 21.7761292,5.00632908 21.5,5.00632908 C21.4957817,5.00632908 21.4915635,5.00638247 21.4873465,5.00648922 C18.658231,5.07811173 15.8291155,5.74261533 13,7 C13,7.04449645 13,10.79246 13,18.2438906 L12.9999854,18.2438906 C12.9999854,18.520041 13.2238496,18.7439052 13.5,18.7439052 C13.5635398,18.7439052 13.6264972,18.7317946 13.6855025,18.7082217 Z" id="Combined-Shape" fill="#000000"></path>
+                                            <path d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" id="Path-41-Copy" fill="#000000" opacity="0.3"></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <h3 class="kt-portlet__head-title" style="color: white; font-size: 1rem;">Petunjuk Pengisian</h3>
+                            </div>
+                            <div class="kt-portlet__head-label">
+                                <div class="kt-align-right">
+                                    <button id="btn_collapse_help" class="btn btn-warning  btn-sm btn-icon btn-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--light">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                                                <path d="M5.29288961,6.70710318 C4.90236532,6.31657888 4.90236532,5.68341391 5.29288961,5.29288961 C5.68341391,4.90236532 6.31657888,4.90236532 6.70710318,5.29288961 L12.7071032,11.2928896 C13.0856821,11.6714686 13.0989277,12.281055 12.7371505,12.675721 L7.23715054,18.675721 C6.86395813,19.08284 6.23139076,19.1103429 5.82427177,18.7371505 C5.41715278,18.3639581 5.38964985,17.7313908 5.76284226,17.3242718 L10.6158586,12.0300721 L5.29288961,6.70710318 Z" id="Path-94" fill="#000000" fill-rule="nonzero" transform="translate(8.999997, 11.999999) scale(-1, 1) translate(-8.999997, -11.999999) "></path>
+                                                <path d="M10.7071009,15.7071068 C10.3165766,16.0976311 9.68341162,16.0976311 9.29288733,15.7071068 C8.90236304,15.3165825 8.90236304,14.6834175 9.29288733,14.2928932 L15.2928873,8.29289322 C15.6714663,7.91431428 16.2810527,7.90106866 16.6757187,8.26284586 L22.6757187,13.7628459 C23.0828377,14.1360383 23.1103407,14.7686056 22.7371482,15.1757246 C22.3639558,15.5828436 21.7313885,15.6103465 21.3242695,15.2371541 L16.0300699,10.3841378 L10.7071009,15.7071068 Z" id="Path-94" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.999997, 11.999999) scale(-1, 1) rotate(-270.000000) translate(-15.999997, -11.999999) "></path>
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-scroll ps" data-scroll="true" data-height="650" data-scrollbar-shown="true" style="height: 650px; overflow: hidden;">
+                                <ul style="padding-inline-start: 20px; font-weight: 600">
+                                    <li><strong>Pekerjaan Bebas</strong>
+ adalah pekerjaan yang dilakukan oleh orang pribadi yang mempunyai 
+keahlian khusus sebagai usaha untuk memperoleh penghasilan yang tidak 
+terikat oleh suatu hubungan kerja.</li>
+                                    <li><strong>Pisah Harta (PH)</strong> adalah apabila, dikehendaki secara tertulis oleh suami-isteri berdasarkan perjanjian pemisahan harta dan penghasilan</li>
+                                    <li><strong>Menjalankan Kewajiban Perpajakan Sendiri (MT)</strong> adalah apabila, dikehendaki oleh isteri yang memilih untuk menjalankan hak dan kewajiban perpajakannya sendiri</li>
+                                    <li><strong>e-SPT</strong> adalah 
+aplikasi yang dibuat oleh Direktorat Jenderal Pajak untuk digunakan oleh
+ Wajib Pajak untuk kemudahan dalam menyampaikan SPT. Anda dapat 
+mengunduhnya <a href="#">di sini</a></li>
+                                    <li><strong>Penghasilan Bruto</strong>
+ adalah jumlah seluruh penghasilan bruto yang diterima atau diperoleh 
+Wajib Pajak sehubungan dengan pekerjaan selama Tahun Pajak yang 
+bersangkutan dari setiap pemberi kerja. 
+                                        Penghasilan tersebut antara lain
+ dapat berupa Gaji/uang pensiun/tunjangan hari tua (THT), Tunjangan PPh,
+ Tunjangan lainnya, uang penggantian, uang lembur dan sebagainya, 
+Honorarium, imbalan lain sejenisnya, 
+                                        Premi asuransi yang dibayar 
+pemberi kerja, Penerimaan dalam bentuk natura dan kenikmatan lainnya 
+yang dikenakan pemotongan PPh Pasal 21, dan Tantiem, bonus, gratifikasi,
+ jasa produksi, THR.</li>
+                                </ul>
+                            <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 halaman-utama">
+                    <div class="kt-portlet kt-portlet--head-sm">
+                        <div class="kt-portlet__head" style="background: #212c5f;">
+                            <div class="kt-portlet__head-label">
+                                <span class="kt-portlet__head-icon" style="color: white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--light">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                                            <path d="M4.85714286,1 L11.7364114,1 C12.0910962,1 12.4343066,1.12568431 12.7051108,1.35473959 L17.4686994,5.3839416 C17.8056532,5.66894833 18,6.08787823 18,6.52920201 L18,19.0833333 C18,20.8738751 17.9795521,21 16.1428571,21 L4.85714286,21 C3.02044787,21 3,20.8738751 3,19.0833333 L3,2.91666667 C3,1.12612489 3.02044787,1 4.85714286,1 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" id="Combined-Shape-Copy" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+                                            <path d="M6.85714286,3 L14.7364114,3 C15.0910962,3 15.4343066,3.12568431 15.7051108,3.35473959 L20.4686994,7.3839416 C20.8056532,7.66894833 21,8.08787823 21,8.52920201 L21,21.0833333 C21,22.8738751 20.9795521,23 19.1428571,23 L6.85714286,23 C5.02044787,23 5,22.8738751 5,21.0833333 L5,4.91666667 C5,3.12612489 5.02044787,3 6.85714286,3 Z M8,12 C7.44771525,12 7,12.4477153 7,13 C7,13.5522847 7.44771525,14 8,14 L15,14 C15.5522847,14 16,13.5522847 16,13 C16,12.4477153 15.5522847,12 15,12 L8,12 Z M8,16 C7.44771525,16 7,16.4477153 7,17 C7,17.5522847 7.44771525,18 8,18 L11,18 C11.5522847,18 12,17.5522847 12,17 C12,16.4477153 11.5522847,16 11,16 L8,16 Z" id="Combined-Shape" fill="#000000" fill-rule="nonzero"></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <h3 class="kt-portlet__head-title" style="color: white">Formulir SPT</h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="kt-section">
+                                <div class="kt-section__title">
+                                    <h4></h4>
+                                </div>
+                                <div class="kt-wizard-v4__content" data-ktwizard-type="step-content" data-ktwizard-state="current" id="tab1">
+                                    <div class="kt-form__section kt-form__section--first">
+                                        <div class="kt-section">
+                                            <div class="kt-section__title">
+                                                <h5>Data Formulir</h5>
+                                            </div>
+                                            <div class="form-group row my-2">
+                                                <div class="col-md-2"></div>
+                                                <label for="ThnPajak" class="col-md-3 col-form-label">Tahun Pajak</label>
+                                                <div class="col-md-5">
+                                                    <select onchange="onFormChange()" id="taxyear" name="taxyear" class="form-control select2me" required="" aria-required="true" aria-invalid="false" aria-describedby="thnPajak-error">
+                                                        <!--<select th:field="*{percentage}">-->
+                                                        <option value="2021">2021</option>
+                                                        <option value="2020">2020</option>
+                                                    </select>
+                                                    <span id="thnPajak-error" class="help-block help-block-error valid" style="display: none;"></span>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                            <div class="form-group row my-2">
+                                                <div class="col-md-2"></div>
+                                                <label class="col-form-label col-md-3">Nama</label>
+                                                <div class="col-md-5">
+                                                    <input oninput="onFormChange()"  type="text" id="name" name="name" class="form-control  form-control-sm" aria-describedby="txtPembetulanKe">
+                                                        <span class="help-block"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row my-2">
+                                                <div class="col-md-2"></div>
+                                                <label class="col-form-label col-md-3">Penghasilan per Tahun</label>
+                                                <div class="col-md-5">
+                                                    <input oninput="onFormChange()" onfocus="onMoneyFocus(this)" onblur="onMoneyChange(this)" onchange="onMoneyChange(this)" type="text" id="income" name="income" class="form-control  form-control-sm" aria-describedby="txtPembetulanKe">
+                                                        <span class="help-block"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row my-2">
+                                                <div class="col-md-2"></div>
+                                                <label class="col-md-3 col-form-label">Status Pernikahan</label>
+                                                <div class="col-md-5">
+                                                    <select onchange="onFormChange()"  id="marriagestatus" name="marriagestatus" class="form-control select2me" required="" aria-required="true" aria-invalid="false" aria-describedby="thnPajak-error">
+                                                        <!--<select th:field="*{percentage}">-->
+                                                        <option value="Lajang">Lajang</option>
+                                                        <option value="Menikah">Menikah</option>
+                                                        <option value="Cerai">Cerai</option>
+                                                    </select>
+                                                    <span id="marriagestatuserror" class="help-block help-block-error valid" style="display: none;"></span>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                            <div class="form-group row my-2">
+                                                <div class="col-md-2"></div>
+                                                <label class="col-form-label col-md-3">Jumlah Anak Tanggungan</label>
+                                                <div class="col-md-5">
+                                                    <input onchange="onFormChange()" oninput="onFormChange()"  type="number" value="0" id="childrencount" name="childrencount" class="form-control  form-control-sm" aria-describedby="txtPembetulanKe">
+                                                        <span class="help-block"></span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-5"></div>
+                                                <button class="btn btn-djp btn-elevate btn-pill" data-ktwizard-type="action-next" onclick="onFormSubmit()">
+                                                    <b>Hitung Pajak</b>
+                                                </button>
+                                                
+                                            </div>
+
+                                            <div id="incometax-container" class="form-group row my-2" style="visibility: hidden;">
+                                                <div class="col-md-2"></div>
+                                                <label class="col-form-label col-md-3">Pajak</label>
+                                                <div class="col-md-5">
+                                                    <input readonly type="text" id="incometax" name="incometax" class="form-control  form-control-sm" aria-describedby="txtPembetulanKe">
+                                                        <span class="help-block"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+                                    <!--End::Isi Konten-->
+                                </div>
+                                 <!--end:: Content--> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        
+
+    
+    
+        <!-- begin:: Footer -->
+        <div class="kt-footer  kt-footer--extended  kt-grid__item" id="kt_footer" style="background-color: #212c5f; color: #FFFFFF">
+            <div class="kt-footer__bottom" style="background-color: #FCEC27; color: #1B1B1B;padding: 18px 0; height: 70px">
+                <div class="kt-container">
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <h2 style="margin-bottom: 0; letter-spacing: -1px;">
+                                <strong>
+                                    Pajak Kita, Untuk Kita
+                                </strong>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-footer__top" style="padding:3px 0 10px 0;">
+                <div class="kt-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="nav" style="margin-top: 4px;    margin-bottom: 15px;">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://pajak.go.id/" style="background-color: #d9d9d9;padding: 10px 15px;padding-top: 15px;margin-top: -10px;">
+                                        <h6 style="color: #093B6E;font-weight: 800">PRANALA</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.kemenkeu.go.id/" style="padding: 10px 15px">
+                                        <h6>Kementerian Keuangan</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.kemenkeu.go.id/apbnkita" style="padding: 10px 15px">
+                                        <h6>APBN Kita</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="http://edukasi.pajak.go.id/" style="padding: 10px 15px">
+                                        <h6>Edukasi Pajak</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://pajak.go.id/reformasi-perpajakan" style="padding: 10px 15px">
+                                        <h6>Reformasi Perpajakan</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://pajak.go.id/prasyarat-pengguna" style="padding: 10px 15px">
+                                        <h6>Prasyarat</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://pajak.go.id/hubungi-kami" style="padding: 10px 15px">
+                                        <h6>Hubungi Kami</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://pajak.go.id/form/contact" style="padding: 10px 15px">
+                                        <h6>Kritik &amp; Saran</h6>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 15px">
+                            <div class="kt-footer__section">
+                                <h3 class="kt-footer__title" style="margin-bottom: 0px;">
+                                    <img alt="Logo Kemenkeu DJP" src="https://i.postimg.cc/g2SjkN3n/Kemenkeu-DJP0.png">
+                                </h3>
+                                <div class="kt-footer__content">
+                                    <p style="font-size:14px;color:white;margin-bottom: 0px;font-weight: 500;line-height: 24px;">&nbsp;&nbsp;&nbsp;&nbsp;Jalan Gatot Subroto, Kav. 40-42, Jakarta 12190<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;Telp: (+62) 21 - 525 0208</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8" style="margin-bottom: 15px">
+                            <div style="width: 50%;float: left; padding-left: 10px;">
+                                <br><h4 style="margin-bottom: 14px; font-weight: 300; font-size: 24px;">Ikuti Kami</h4>
+                                <h5 class="caption-sosmed">@DitjenPajakRI</h5>
+                            </div>
+                            <div class="row" style="width: 50%;float: left;">
+                                <div class="col-md-6" style="padding-right: 15px; padding-left: 15px;">
+                                    <a href="https://pengaduan.pajak.go.id/">
+                                        <img alt="Pengaduan dan Live Chat" title="Pengaduan dan Live Chat" class="img-responsive kringsitus" src="https://i.postimg.cc/SRhNt5bt/kringpajak.png" style="display: block; max-width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                                <div class="col-md-6" style="padding-right: 15px; padding-left: 15px;">
+                                    <img alt="Situs Pajak" class="img-responsive kringsitus" src="https://i.postimg.cc/xjvdb0Kr/situspajak.png" style="display: block; max-width: 100%; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-footer__wrapper">
+                        <div class="kt-footer__copyright" style="color: #ccc; margin-bottom: 16px; font-size: .9em; font-weight: 500;">
+                            Copyright Direktorat Jenderal Pajak.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: Footer -->
+    
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="kt_scrolltop" class="kt-scrolltop">
+            <i class="fa fa-arrow-up"></i>
+        </div>
+
+        <!-- begin::Global Config(global config for global JS sciprts) -->
+        <script>
+            window.onscroll = function () {
+                $('.uang').autoNumeric('init', {aDec: ',', aSep: '.', mDec: '0', vMin: '0.00'});
+                myFunction();
+            };
+
+            var header = document.getElementById("kt_header_mobile");
+            var sticky = header.offsetTop;
+
+            function myFunction() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add("sticky");
+                    $(".menu-wrapper-djp").addClass("sticky-main");
+                    $(".user-djp").addClass("sticky-user");
+                } else {
+                    header.classList.remove("sticky");
+                    $(".menu-wrapper-djp").removeClass("sticky-main");
+                    $(".user-djp").removeClass("sticky-user");
+                }
+            }
+        </script>
+        <script>
+            var KTAppOptions = {
+                "colors": {
+                    "state": {
+                        "brand": "#374afb",
+                        "light": "#ffffff",
+                        "dark": "#282a3c",
+                        "primary": "#5867dd",
+                        "success": "#34bfa3",
+                        "info": "#36a3f7",
+                        "warning": "#ffb822",
+                        "danger": "#fd3995"
+                    },
+                    "base": {
+                        "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+                        "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+                    }
+                }
+            };
+        </script>
+        <script>
+            var KTAppOptions = {
+                "colors": {
+                    "state": {
+                        "brand": "#5d78ff",
+                        "dark": "#282a3c",
+                        "light": "#ffffff",
+                        "primary": "#5867dd",
+                        "success": "#34bfa3",
+                        "info": "#36a3f7",
+                        "warning": "#ffb822",
+                        "danger": "#fd3995"
+                    },
+                    "base": {
+                        "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+                        "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+                    }
+                }
+            };
+        </script>
+        <script></script>
+        <!-- end::Global Config -->
+        
+        <!--begin:: Global Mandatory Vendors -->
+        <script src="index_files/jquery_003.js" type="text/javascript"></script>
+        <script src="index_files/popper.js" type="text/javascript"></script>
+        <script src="index_files/bootstrap.js" type="text/javascript"></script>
+        <script src="index_files/js.js" type="text/javascript"></script>
+        <script src="index_files/moment.js" type="text/javascript"></script>
+        <script src="index_files/tooltip.js" type="text/javascript"></script>
+        <script src="index_files/perfect-scrollbar.js" type="text/javascript"></script>
+        <script src="index_files/sticky.js" type="text/javascript"></script>
+        <script src="index_files/wNumb.js" type="text/javascript"></script>
+        <!--end:: Global Mandatory Vendors -->
+        <script src="index_files/sweetalert2_002.js" type="text/javascript"></script>
+        <script src="index_files/sweetalert2.js" type="text/javascript"></script>
+        <script src="index_files/scripts.js" type="text/javascript"></script>
+        <script src="index_files/jquery.js" type="text/javascript"></script>
+        <script src="index_files/autoNumeric-min.js" type="text/javascript"></script>
+        <script> </script>
+        
+            <script src="index_files/jquery_002.js" type="text/javascript"></script>
+            <script src="index_files/additional-methods.js" type="text/javascript"></script>
+            <script src="index_files/messages_id.js" type="text/javascript"></script>
+            <script src="index_files/jquery-validation.js" type="text/javascript"></script>
+            <script src="index_files/sptbuat.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            $.ajaxSetup({
+                headers: {'Authorization': 'Bearer ' + $("#ac").val()}
+            });
+        </script>
+        <script>var ctx = "/"; </script>
+        <script src="index_files/custom.js" type="text/javascript"></script>
+        <script src="index_files/app.js" type="text/javascript"></script>
+        <script src="main.js"></script>
+        <script src="default.js"></script>
+        <!--end::Page Scripts -->
+    
+    
+</body><!-- end::Body --><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

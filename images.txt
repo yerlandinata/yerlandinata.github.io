@@ -1,0 +1,23 @@
+https://i.postimg.cc/Cdp8gPCt/DJP-wakandas.png wakandas
+https://i.postimg.cc/g2SjkN3n/Kemenkeu-DJP0.png
+https://i.postimg.cc/SRhNt5bt/kringpajak.png
+https://i.postimg.cc/Hksjgfcq/logo-efiling.png
+https://i.postimg.cc/xjvdb0Kr/situspajak.png
+
+<link href="https://efiling.pajak.go.id/assets/css/djp/pages/custom/general/wizard/wizard-4.min.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/general/perfect-scrollbar/css/perfect-scrollbar.min.rtl.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/css/djp/pages/custom/general/uniform/uniform.default.min.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/general/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/general/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/general/sweetalert2/dist/sweetalert2.min.rtl.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/general/socicon/css/socicon.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/custom/vendors/line-awesome/css/line-awesome.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/custom/vendors/flaticon/flaticon.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/custom/vendors/flaticon2/flaticon.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/vendors/general/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/css/djp/style.bundle/base.min.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/css/djp/style.bundle/typo.min.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/css/djp/style.bundle/component.min.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/css/djp/style.bundle/part.min.css" rel="stylesheet" type="text/css">
+<link href="https://efiling.pajak.go.id/assets/css/djp/style.bundle/datatablestyle.min.css" rel="stylesheet" type="text/css"> 
+<link href="https://efiling.pajak.go.id/assets/css/custom.css" rel="stylesheet" type="text/css">
