@@ -7,7 +7,7 @@ function calculate_tax(annual_income) {
 
 function calculate_federal_tax(annual_income) {
     const taxable_income = annual_income - 50000
-    if (taxable_income < 0) {
+    if (taxable_income <= 0) {
         return 0
     }
 
