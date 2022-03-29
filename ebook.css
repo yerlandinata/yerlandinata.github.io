@@ -2,7 +2,7 @@ html {
     background-color: black;
     color: azure;
     font-family: Georgia, serif;
-    font-size: 180%;
+    font-size: 160%;
 }
 
 body {
@@ -28,7 +28,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: .5em;
+    margin: .4em;
     height: 85vh;
 }
 
@@ -36,7 +36,7 @@ nav button {
     background-color: transparent;
     border: none;
     color: rgb(0, 114, 114);
-    font-size: 32pt;
+    font-size: 28pt;
     display: none;
 }
 
@@ -53,8 +53,8 @@ nav button:active {
 .page-container {
     position: relative;
     visibility: hidden;
-    margin: .5em;
-    padding: 1.5em;
+    margin: .4em;
+    padding: 1.3em;
     height: 85vh;
     width: 900px;
     border: 3px solid rgb(44, 44, 44);
@@ -69,7 +69,6 @@ nav button:active {
 
 @media only screen and (max-width: 600px) {
     body {
-        justify-content: space-between;
         flex-direction: column-reverse;
         height: 100vh;
     }
@@ -78,27 +77,29 @@ nav button:active {
         flex-direction: row;
         width: 50vw;
         justify-content: space-around;
-        margin: 2px;
+        margin: 1.6px;
         height: fit-content;
         opacity: 0;
         transition: opacity .5s;
     }
     
     nav button {
-        font-size: 24pt;
+        font-size: 22pt;
     }
 
     #nav-reset {
         position: absolute;
-        bottom: 5px;
+        bottom: 4px;
         top: auto;
     }
 
     .page-container {
-        width: 86vw;
-        height: 87vh;
+        width: 88vw;
+        height: 90vh;
         margin: 2vw;
-        padding: 5vw;
+        padding: 4vw;
+        border: none;
+        box-shadow: none;
     }
   }
 
