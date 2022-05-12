@@ -480,6 +480,7 @@ const library = {
     17: 'elite2_03.json.encrypted',
     18: 'elite2_04.json.encrypted',
     19: 'elite2_04.5.json.encrypted',
+    20: 'elite2_05.json.encrypted',
 };
 
 const params = (new URL(document.location)).searchParams;
