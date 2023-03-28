@@ -472,23 +472,28 @@ class BookView {
 }
 
 const library = {
-    12: 'elite10.json.encrypted',
-    13: 'elite11.json.encrypted',
-    14: 'elite11.5.json.encrypted',
-    15: 'elite2_01.json.encrypted',
-    16: 'elite2_02.json.encrypted',
-    17: 'elite2_03.json.encrypted',
-    18: 'elite2_04.json.encrypted',
-    19: 'elite2_04.5.json.encrypted',
-    20: 'elite2_05.json.encrypted',
-    21: 'elite2_06.json.encrypted',
-    22: 'elite2_07.json.encrypted',
-    23: 'elite2_08.json.encrypted',
+    'elite_12': 'elite10.json.encrypted',
+    'elite_13': 'elite11.json.encrypted',
+    'elite_14': 'elite11.5.json.encrypted',
+    'elite_15': 'elite2_01.json.encrypted',
+    'elite_16': 'elite2_02.json.encrypted',
+    'elite_17': 'elite2_03.json.encrypted',
+    'elite_18': 'elite2_04.json.encrypted',
+    'elite_19': 'elite2_04.5.json.encrypted',
+    'elite_20': 'elite2_05.json.encrypted',
+    'elite_21': 'elite2_06.json.encrypted',
+    'elite_22': 'elite2_07.json.encrypted',
+    'elite_23': 'elite2_08.json.encrypted',
+    'liar_01': 'liar_01.json.encrypted',
 };
 
 const params = (new URL(document.location)).searchParams;
 
-const volume = parseInt(params.get('vol'));
+const volume = params.get('vol');
+
+if (volume.length > 12) {
+    throw new Error("volume not found!");
+}
 
 if (!library[volume]) {
     alert('volume not found!');
