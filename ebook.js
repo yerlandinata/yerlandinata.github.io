@@ -485,7 +485,6 @@ const library = {
     'elite_22': 'elite2_07.json.encrypted',
     'elite_23': 'elite2_08.json.encrypted',
     'liar_01': 'liar_01.json.encrypted',
-
 };
 
 const params = (new URL(document.location)).searchParams;

@@ -1,0 +1,141 @@
+html {
+    background-color: black;
+    color: azure;
+    font-family: Georgia, serif;
+    font-size: 160%;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+html, body {
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: .4em;
+    height: 85vh;
+}
+
+nav button {
+    background-color: transparent;
+    border: none;
+    color: rgb(0, 114, 114);
+    font-size: 28pt;
+    display: none;
+}
+
+nav button:hover {
+    text-shadow: 0 0 20px aqua;
+    cursor: pointer;
+}
+
+nav button:active {
+    text-shadow: 0 0 30px aqua;
+    cursor: pointer;
+}
+
+.page-container {
+    position: relative;
+    visibility: hidden;
+    margin: .4em;
+    padding: 1.3em;
+    height: 85vh;
+    width: 900px;
+    border: 3px solid rgb(44, 44, 44);
+    box-shadow: 0 0 5px azure;
+}
+
+#nav-reset {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        flex-direction: column-reverse;
+        height: 100vh;
+    }
+
+    nav {
+        flex-direction: row;
+        width: 50vw;
+        justify-content: space-around;
+        margin: 1.6px;
+        height: fit-content;
+        opacity: 0;
+        transition: opacity .5s;
+    }
+    
+    nav button {
+        font-size: 22pt;
+    }
+
+    #nav-reset {
+        position: absolute;
+        bottom: 4px;
+        top: auto;
+    }
+
+    .page-container {
+        width: 88vw;
+        height: 90vh;
+        margin: 2vw;
+        padding: 4vw;
+        border: none;
+        box-shadow: none;
+    }
+  }
+
+.page-image {
+    max-width: 90vw;
+}
+
+.page-image img {
+    width: 100%;
+}
+
+.loading {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 50vw;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+}
+
+.loading > progress {
+    width: 100%;
+}
+
+img {
+    max-height: 80%;
+}
+
+img .gaiji {
+    filter: invert(1);
+}
+
+rt {
+    user-select: none;
+}
+
+.highlighted {
+    background-color: #446207;;
+}
