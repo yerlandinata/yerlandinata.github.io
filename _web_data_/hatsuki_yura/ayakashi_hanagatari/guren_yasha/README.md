@@ -48,8 +48,7 @@ Store: https://hatukiyura.booth.pm/items/689606
 | <ruby>散<rt>ち</rt></ruby>らした恋の<ruby>花弁<rt>はなびら</rt></ruby>  | Chirashita koi no hanabira  
 
 ## English Translation
-(source: https://www.youtube.com/watch?v=u0HP-g6RlwY, user: https://www.youtube.com/@panpanpa4534)  
-My comments: It was a very good translation effort, the poem itself is difficult to translate / things lost in translation.
+source: Musical Tales of Yura Hatsuki (deleted blog) -- https://web.archive.org/web/20210825003317/https://musicaltalesofyurahatsuki.wordpress.com/2017/11/18/%e7%b4%85%e8%93%ae%e5%a4%9c%e5%8f%89-guren-yasha-english-translation-%e5%a6%96%e8%8f%af%e8%aa%9e%e3%82%8a-ayakashi-hana-gatari/  
 
 The crystal twilight, takes me to my pledge,  
 I kissed your skin, everywhere, entirely and only for you.  
@@ -92,3 +91,26 @@ The flames of red lotus illuminate the night.
 Dancing in madness, for me, my shadow!   
 A hazy moon floats in the sky... The tears from my heart enlighten your absence,  
 Scattering my petals of love.  
+
+## Song Author Comments
+source:  http://hatukiyura.blog.fc2.com/blog-entry-91.html  
+こちらは「八百屋お七」をモチーフに書いてみました。好きな人に会いたいがために  
+町に火をつけて半鐘を自分で鳴らして好きな人が逃げてくるのを待ってる感じです。  
+純粋だけど狂った思考って良いですな。  
+
+In this song, I tried to write the lyrics, in being inspired by "Yaoya Oshichi." [Yaoya Oshichi is the daughter of a grower who lives in Edo, in the district of Hongou. She tries to cause a fire to find a boy she loves. Despite her young age but because she is over 15 years old, she suffers the punishment reserved for incendiaries.]
+I have written the feelings as: "I want to meet the person that I'm loving". I put the fire to the town, I ring the fire bell by myself, and wait for the person I love, to escape.
+Pure, but also crazy thoughts are pleasant.
+
+## Translator Comments
+translation author: Musical Tales of Yura Hatsuki (deleted blog) -- https://web.archive.org/web/20210825004825/https://musicaltalesofyurahatsuki.wordpress.com/2017/11/18/m3-40-%e5%a6%96%e8%8f%af%e8%aa%9e%e3%82%8a-ayakashi-hana-gatari-%e8%91%89%e6%9c%88%e3%82%86%e3%82%89-yura-hatsuki-comments/
+
+The song is inspired by Yaoya Oshichi and the Night Parade of One Hundred Demons (hyakkiyakou).
+
+It's a mysterious song, where the girl has promised to see, once again, her lover. To fulfil her promise, she put the fire to the town, ring the fire bell, and wait for the person that she I loved, to escape (thanks to Yura's comment). But when she put the fire to the town, something supernatural has happened. Without being aware, the girl seems to have open the door of hell, leading the youkai of underworld to her town. Then, the town is attacked by the dangerous youkai and the fire.
+
+People from the town will run away, against that chaos. And the girl will finally able to see her lover, once again, who was escaping of the town.
+
+In order to protect him, from people who private him, and the dangerous youkai; the soul of the girl will be stolen during The Night Parade of One Hundred Demons (hyakkiyakou). The girl will turn herself as a powerful youkai which is a Yasha.
+
+Then, it will begin a massacre in the town. The girl will begin to kill everyone. But by error, she will also kill her lover. Youkai are creature that can eat humans. So, she eat the fresh and the blood of her beloved one. Until his soul. The end of the song is about her tears, regret and her powerlessness, against the action she has committed.
