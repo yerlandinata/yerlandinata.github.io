@@ -13,7 +13,7 @@ Album: 妖華語り / Ayakashi Hanagatari
 
 指きりしまた明日と微笑みを浮かべながら  
 交わした心と心  
-何故　<ruby>何<rt>な</rt>処<rt>ぜ</rt></ruby>　隠す月　会いたい　今すぐ  
+何故　<ruby>何<rt>ど</rt>処<rt>こ</rt></ruby>　隠す月　会いたい　今すぐ  
 
 紅蓮の炎が<ruby>照<rt>て</rt></ruby>らす夜  
 貴方の<ruby>為<rt>ため</rt></ruby>に<ruby>鐘<rt>かね</rt></ruby>打ち鳴らす  
