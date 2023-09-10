@@ -1,0 +1,22 @@
+name: Drop
+name_language: en
+avatar:
+  - url: https://pbs.twimg.com/profile_images/876365826168832000/ub3XOHqY_400x400.jpg
+    description: X.com user profile picture
+summary:
+  - source: https://x.com/Drop99
+    source_description: Drop's X.com profile page
+    language: jp
+    content: |
+      Dropという名前で音楽活動しております。
+      清風明月(Dropx葉月ゆら)というユニットでゴシックな曲を作っています。
+    translation:
+        language: en
+        source: https://chat.openai.com/
+        source_description: Chat GPT
+        content: |
+          I'm engaged in music activities under the name 'Drop'.
+          I create Gothic music as a unit called 'Seifuu Meigetsu (Drop x Hatsuki Yura)
+website: 
+  - url: https://x.com/Drop99
+    description: Drop X.com user account

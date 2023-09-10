@@ -1,0 +1,50 @@
+name: 葉月ゆら
+name_language: jp
+name_translation:
+  - language: jp_romaji
+    content: Hatsuki Yura
+avatar:
+  - url: https://pbs.twimg.com/profile_images/676905104/______400x400.jpg
+    description: X.com user profile picture
+summary:
+  - source: https://www.pixiv.net/en/users/12685805
+    source_description: Pixiv profile page
+    language: jp
+    content: |
+      ゴシック・メルヘンが大好きな葉月ゆらです。
+      普段は歌唱・作詞をさせていただいております。
+      イラストを描くのが趣味なのですがまだまだ下手です。
+      宜しくお願いします(●´ω｀●）
+    translation:
+        language: en
+        source: https://chat.openai.com/
+        source_description: Chat GPT
+        content: |
+          I'm Hatsuki Yura, a big fan of Gothic and Märchen.
+          I usually do singing and songwriting.
+          Drawing illustrations is a hobby of mine, but I'm still not very good at it.
+          Thank you in advance! (●´ω｀●)
+  - source: https://x.com/yura_hatuki
+    source_description: Hatsuki Yura X.com profile page
+    language: jp
+    content: |
+      作詞・歌唱活動中の葉月ゆらです。宜しくお願いします。
+      (´Д` )ｶﾞｵｰ 好きなもの：音楽・バイクお出かけ・水族館・動物園・人形・廃墟・長いリフト。
+    translation:
+        language: en
+        source: https://chat.openai.com/
+        source_description: Chat GPT
+        content: |
+          I'm Hatsuki Yura, currently engaged in songwriting and singing activities. Thank you in advance!
+          (´Д` )ｶﾞｵｰ Things I like: music, motorcycle outings, aquariums, zoos, dolls, abandoned places, and long lifts.
+website: 
+  - url: http://hatukiyura.blog.fc2.com
+    description: Hatsuki Yura personal blog
+  - url: https://x.com/yura_hatuki
+    description: Hatsuki Yura X.com account
+  - url: https://hatukiyura.booth.pm/
+    description: Hatsuki Yura Pixiv Booth store page
+  - url: https://www.melonbooks.co.jp/circle/index.php?circle_id=22630
+    description: Melonbooks store page
+  - url: https://www.pixiv.net/en/users/12685805
+    description: Pixiv profile page
