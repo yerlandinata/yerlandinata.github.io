@@ -487,6 +487,7 @@ const library = {
     'liar_01': 'liar_01.json.encrypted',
     'liar_02': 'liar_02.json.encrypted',
     'liar_03': 'liar_03.json.encrypted',
+    'alya_01': 'alya_01.json.encrypted',
 
 };
 
