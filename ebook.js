@@ -2,6 +2,19 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// const useEncryption = false;
+const useEncryption = true;
+
+const supportedImgFormat = [
+    'jpeg',
+    'jpg',
+    'gif',
+    'png',
+    'svg',
+];
+
+const localStorageKeyEbookListPassword = 'ebooklist_password';
+
 class BookView {
     /**
      * @param {string} fileName 
@@ -350,7 +363,7 @@ class BookView {
      * @param {JQuery<HTMLElement>} page 
      */
     async renderImages(page) {
-        
+
         // img
         page.find('img').each((_, img) => {
             const isRendered = img.getAttribute('data-is-rendered');
@@ -455,61 +468,134 @@ class BookView {
      * @param {string} url 
      */
     getImageType(url) {
-        const knownTypes = [
-            'jpg',
-            'jpeg',
-            'gif',
-            'png',
-            'svg',
-        ];
-        for (let i = 0; i < knownTypes.length; i++) {
-            if (url.includes('.' + knownTypes[i])) {
-                return knownTypes[i];
+        
+        for (let i = 0; i < supportedImgFormat.length; i++) {
+            if (url.includes('.' + supportedImgFormat[i])) {
+                return supportedImgFormat[i];
             }
         }
         return undefined;
     }
 }
 
-const library = {
-    'elite_12': 'elite10.json.encrypted',
-    'elite_13': 'elite11.json.encrypted',
-    'elite_14': 'elite11.5.json.encrypted',
-    'elite_15': 'elite2_01.json.encrypted',
-    'elite_16': 'elite2_02.json.encrypted',
-    'elite_17': 'elite2_03.json.encrypted',
-    'elite_18': 'elite2_04.json.encrypted',
-    'elite_19': 'elite2_04.5.json.encrypted',
-    'elite_20': 'elite2_05.json.encrypted',
-    'elite_21': 'elite2_06.json.encrypted',
-    'elite_22': 'elite2_07.json.encrypted',
-    'elite_23': 'elite2_08.json.encrypted',
-    'liar_01': 'liar_01.json.encrypted',
-    'liar_02': 'liar_02.json.encrypted',
-    'liar_03': 'liar_03.json.encrypted',
-    'alya_01': 'alya_01.json.encrypted',
+class BookTitleListView {
+    constructor(titleList, password) {
+        $('html').css('overflow', 'visible');
+        $('body').css('overflow', 'visible');
+        $('body').css('height', '100%');
+        $('#navigation').hide();
 
-};
+        if (useEncryption) {
+            this.password = password;
+            this.renderEncrypted(titleList);
+        } else {
+            this.renderNonEncrypted(titleList);
+        }
+    }
 
-const params = (new URL(document.location)).searchParams;
+    async renderEncrypted(titleList) {
+        const ebookShowcase = $(`<div class='ebook-showcase'></div>`);
+        let isEmpty = true;
+        titleList.reverse();
+        for (let title of titleList) {
+            let coverFmt = null;
+            let fileName = '';
+            for (let i = 0; i < supportedImgFormat.length; i++) {
+                fileName = title + '.' + supportedImgFormat[i] + '.encrypted';
+                try {
+                    if ((await fetch(fileName, {method: 'HEAD', cache: 'no-store'})).status == 200) {
+                        console.log('found ' + fileName)
+                        coverFmt = supportedImgFormat[i];
+                        break;
+                    }
+                } catch (error) {
+                    continue;
+                }
+            }
+            if (coverFmt == null) {
+                return;
+            }
 
-const volume = params.get('vol');
+            const imgb64Encrypted = await ((await fetch(fileName)).text());
+            const imgb64Decrypted = CryptoJS.AES.decrypt(imgb64Encrypted, this.password).toString(CryptoJS.enc.Utf8);
 
-if (volume.length > 12) {
-    throw new Error("volume not found!");
+            const img = $(`<a href=?vol=${title}><div class='ebook-title-container'><img src='${imgb64Decrypted}' class='ebook-title'></div></a>`);
+            ebookShowcase.append(img);
+            isEmpty = false;
+            console.log('not empty');
+        }
+        console.log(isEmpty);
+        if (!isEmpty) {
+            $('main').append(ebookShowcase);
+        }
+        $('.loading').hide();
+        localStorage.setItem(localStorageKeyEbookListPassword, this.password);
+    }
+
+    async renderNonEncrypted(titleList) {
+        const ebookShowcase = $(`<div class='ebook-showcase'></div>`);
+        let isEmpty = true;
+        titleList.reverse();
+        for (let title of titleList) {
+            let coverFmt = null;
+            for (let i = 0; i < supportedImgFormat.length; i++) {
+                if ((await fetch(title + '.' + supportedImgFormat[i], {method: 'HEAD', cache: 'no-store'})).status == 200) {
+                    coverFmt = supportedImgFormat[i];
+                    break;
+                }
+            }
+            if (coverFmt == null) {
+                return;
+            }
+
+            const img = $(`<div class='ebook-title-container'><img src='${title + '.' + coverFmt}' class='ebook-title'></div>`);
+            ebookShowcase.append(img);
+            isEmpty = false;
+            console.log('not empty');
+        }
+        console.log(isEmpty);
+        if (!isEmpty) {
+            $('main').append(ebookShowcase);
+        }
+        $('.loading').hide();
+    }
+
 }
 
-if (!library[volume]) {
-    alert('volume not found!');
-    $('body').detach();
-    throw new Error("volume not found!");
-}
-let password;
-if (library[volume].includes('encrypted')) {
-    password = prompt('password:', this.localStorage.getItem(library[volume] + '_password') || '')
+
+async function render() {
+    const response = await fetch("ebook_list.json", {cache: "no-store"});
+    console.log('useEncryption: ', useEncryption);
+
+    const library = await response.json();
+
+    const params = (new URL(document.location)).searchParams;
+
+    const volume = params.get('vol');
+    if (!volume) {
+        let password = '';
+        if (useEncryption) {
+            password = prompt('password:', this.localStorage.getItem(localStorageKeyEbookListPassword) || '');
+        }
+        return new BookTitleListView(library, password);
+    }
+
+    if (!library.includes(volume)) {
+        const errMsg = 'volume not found!';
+        alert(errMsg);
+        return new BookTitleListView(library);
+    }
+    let src = volume + '.json';
+    let password;
+    if (useEncryption) {
+        src += '.encrypted';
+        password = prompt('password:', this.localStorage.getItem(src + '_password') || '')
+    }
+
+    return new BookView(src, password);
 }
 
-const view = new BookView(library[volume], password);
+render();
 /**
  * 
  
