@@ -153,10 +153,12 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1em;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
+    height: 4em;
+    width: 30vh;
 }
 
 .button:hover {
