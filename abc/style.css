@@ -173,3 +173,7 @@ body {
     display: none;
     animation: flashBorder 0.5s infinite alternate;
 }
+
+* {
+    touch-action: manipulation;
+}
