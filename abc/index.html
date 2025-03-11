@@ -79,6 +79,20 @@
             });
         }
 
+        function disableInput() {
+            const inputs = document.querySelectorAll('.table-cell input');
+            inputs.forEach(input => {
+                input.setAttribute('disabled', true);
+            });
+        }
+
+        function enableInput() {
+            const inputs = document.querySelectorAll('.table-cell input');
+            inputs.forEach(input => {
+                input.removeAttribute('disabled');
+            });
+        }
+
         function startFlash() {
             const inputs = document.querySelectorAll('.table-cell input');
             inputs.forEach(input => {
@@ -289,7 +303,9 @@
                 unrenderTable('table-render');
                 renderTable(mainGridOutput, 'table-render');
                 stopFlash();
+                disableInput();
             };
+            disableInput();
             const solveButton = document.getElementById('solve');
             const iterButton = document.getElementById('iterate');
             solveButton.style.display = 'none';
@@ -321,6 +337,7 @@
             }
 
             startFlash();
+            enableInput();
             
             solveButton.style.display = 'block';
             iterButton.style.display = 'none';
