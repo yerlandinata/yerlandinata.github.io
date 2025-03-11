@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>6x6 Square Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <p class="table-description">
+        ABC End View
+    </p>
+    <p class="table-description">
+        <b><u>Original problem statement</u></b>: Fill in the letters into the grid so that each letter appears only
+        once in every row and column. <br />
+        The letters around the grid indicate which letter is the first one in that row or column seen from that
+        position. <br />
+        In this variant there are also two empty cells in every row and column (denoted by X). <br />
+    </p>
+    <p class="table-description">
+        <b><u>On this web page</u></b>: You set the letters around the grid, then click "solve" button to auto solve.
+        <br />
+        <b><u>Valid letters</u></b>: A B C D <br />
+    </p>
+    <p class="table-description">
+        <button id="solve" class="button" onclick="solvePuzzle()">Solve</button>
+    </p>
+    <p class="table-description">
+        <button id="iterate" class="button">continue</button>
+    </p>
+    <br /><br /><br />
+    <div id="table-render"></div>
+    <div id="toast" class="toast"></div>
+
+    <script>
+        /**
+         * @returns {string[][][]}
+         */
+         function generateEmptyMainGridOutput() {
+            return [
+                Array(6).fill(""),
+                Array(6).fill(""),
+                Array(6).fill(""),
+                Array(6).fill(""),
+                Array(6).fill(""),
+                Array(6).fill(""),
+            ];
+        }
+        let mainGridOutput = generateEmptyMainGridOutput();
+
+        /**
+         * @returns {string[][][]}
+         */
+        function generateEmptyMainCandidateOutput() {
+            const res = [];
+            for (let r = 0; r < 6; r++) {
+                res.push([]);
+                for (let c = 0; c < 6; c++) {
+                    res[r].push([]);
+                }
+            }
+            return res;
+        }
+
+        let highlightMainGrid = null;
+
+        let mainGridCandidateOutput = generateEmptyMainCandidateOutput();
+
+        let firstRow = Array(6).fill("...");
+        let firstColumn = Array(6).fill("...");
+        let lastRow = Array(6).fill("...");
+        let lastColumn = Array(6).fill("...");
+
+        function stopFlash() {
+            const inputs = document.querySelectorAll('.table-cell input');
+            inputs.forEach(input => {
+                input.classList.add('no-animation');
+            });
+        }
+
+        function startFlash() {
+            const inputs = document.querySelectorAll('.table-cell input');
+            inputs.forEach(input => {
+                input.classList.remove('no-animation');
+            });
+        }
+
+
+        function renderTable(data, containerId) {
+            console.log("firstRow: " + JSON.stringify(firstRow));
+            console.log("firstColumn: " + JSON.stringify(firstColumn));
+            console.log("lastRow: " + JSON.stringify(lastRow));
+            console.log("lastColumn: " + JSON.stringify(lastColumn));
+            const container = document.getElementById(containerId);
+            if (!container) {
+                console.error(`Container with id "${containerId}" not found.`);
+                return;
+            }
+
+            const tableContainer = document.createElement('div');
+            tableContainer.className = 'table-container';
+
+            // First Row
+            const firstRowElement = document.createElement('div');
+            firstRowElement.className = 'table-row';
+
+            // Empty first cell
+            const emptyCellTop = document.createElement('div');
+            emptyCellTop.className = 'table-cell';
+            firstRowElement.appendChild(emptyCellTop);
+
+            firstRow.forEach((cellData, index) => {
+                const cellElement = document.createElement('div');
+                cellElement.className = 'table-cell';
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = cellData;
+                input.addEventListener('blur', (event) => {
+                    const value = event.target.value.toUpperCase();
+                    if (value === "A" || value === "B" || value === "C" || value === "D" || value === "") {
+                        firstRow[index] = value || "...";
+                        event.target.value = value || "...";
+                        stopFlash();
+                    } else {
+                        event.target.value = firstRow[index];
+                    }
+                });
+                input.addEventListener('focus', (event) => {
+                    if (event.target.value === "...") {
+                        event.target.value = "";
+                    } else {
+                        input.select();
+                    }
+                });
+                cellElement.appendChild(input);
+                firstRowElement.appendChild(cellElement);
+            });
+
+            tableContainer.appendChild(firstRowElement);
+
+            // Remaining Rows
+            firstColumn.forEach((rowHeader, rowIndex) => {
+                const rowElement = document.createElement('div');
+                rowElement.className = 'table-row';
+
+                // First column data
+                const headerCell = document.createElement('div');
+                headerCell.className = 'table-cell';
+                const headerInput = document.createElement('input');
+                headerInput.type = 'text';
+                headerInput.value = rowHeader;
+                headerInput.addEventListener('blur', (event) => {
+                    const value = event.target.value.toUpperCase();
+                    if (value === "A" || value === "B" || value === "C" || value === "D" || value === "") {
+                        firstColumn[rowIndex] = value || "...";
+                        event.target.value = value || "...";
+                        stopFlash();
+                    } else {
+                        event.target.value = firstColumn[rowIndex];
+                    }
+                });
+                headerInput.addEventListener('focus', (event) => {
+                    if (event.target.value === "...") {
+                        event.target.value = "";
+                    } else {
+                        headerInput.select();
+                    }
+                });
+                headerCell.appendChild(headerInput);
+                rowElement.appendChild(headerCell);
+
+                data[rowIndex].forEach((cellData, colIndex) => {
+                    const cellElement = document.createElement('div');
+                    cellElement.className = 'table-cell';
+                    cellElement.classList.add('solution');
+                    if (highlightMainGrid != null) {
+                        let [r, c] = highlightMainGrid;
+                        if (rowIndex == r && colIndex == c) {
+                            cellElement.classList.add('highlight');
+                        }
+                    }
+                    cellElement.textContent = cellData;
+                    const cellTooltip = document.createElement('span');
+                    cellTooltip.className = 'tooltip';
+                    cellTooltip.textContent = mainGridCandidateOutput[rowIndex][colIndex].join();
+                    cellElement.appendChild(cellTooltip);
+                    rowElement.appendChild(cellElement);
+                });
+
+                // Last column data
+                const tailCell = document.createElement('div');
+                tailCell.className = 'table-cell';
+                const tailInput = document.createElement('input');
+                tailInput.type = 'text';
+                tailInput.value = lastColumn[rowIndex];
+                tailInput.addEventListener('blur', (event) => {
+                    const value = event.target.value.toUpperCase();
+                    if (value === "A" || value === "B" || value === "C" || value === "D" || value === "") {
+                        lastColumn[rowIndex] = value || "...";
+                        event.target.value = value || "...";
+                        stopFlash();
+                    } else {
+                        event.target.value = lastColumn[rowIndex];
+                    }
+                });
+                tailInput.addEventListener('focus', (event) => {
+                    if (event.target.value === "...") {
+                        event.target.value = "";
+                    } else {
+                        tailInput.select();
+                    }
+                });
+                tailCell.appendChild(tailInput);
+                rowElement.appendChild(tailCell);
+
+                tableContainer.appendChild(rowElement);
+            });
+
+            // Last Row
+            const lastRowElement = document.createElement('div');
+            lastRowElement.className = 'table-row';
+            // Empty first cell
+            const emptyCellBottom = document.createElement('div');
+            emptyCellBottom.className = 'table-cell';
+            lastRowElement.appendChild(emptyCellBottom);
+
+            lastRow.forEach((cellData, index) => {
+                const cellElement = document.createElement('div');
+                cellElement.className = 'table-cell';
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = cellData;
+                input.addEventListener('blur', (event) => {
+                    const value = event.target.value.toUpperCase();
+                    if (value === "A" || value === "B" || value === "C" || value === "D" || value === "") {
+                        lastRow[index] = value || "...";
+                        event.target.value = value || "...";
+                        stopFlash();
+                    } else {
+                        event.target.value = lastRow[index];
+                    }
+                });
+                input.addEventListener('focus', (event) => {
+                    if (event.target.value === "...") {
+                        event.target.value = "";
+                    } else {
+                        input.select();
+                    }
+                });
+                cellElement.appendChild(input);
+                lastRowElement.appendChild(cellElement);
+            });
+            tableContainer.appendChild(lastRowElement);
+
+            container.appendChild(tableContainer);
+        }
+
+        function unrenderTable(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) {
+                console.error(`Container with id "${containerId}" not found.`);
+                return;
+            }
+
+            // Remove all child nodes from the container
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+        }
+
+        function showToast(message, duration) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration); // Hide after 3 seconds
+        }
+
+        renderTable(mainGridOutput, 'table-render');
+
+        setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 3000);
+    </script>
+    <script type="text/javascript" src="solver.js"></script>
+    <script>
+        async function solvePuzzle() {
+            const refreshTable = () => {
+                unrenderTable('table-render');
+                renderTable(mainGridOutput, 'table-render');
+                stopFlash();
+            };
+            const solveButton = document.getElementById('solve');
+            const iterButton = document.getElementById('iterate');
+            solveButton.style.display = 'none';
+            iterButton.style.display = 'block';
+            let continueTipShown = false;
+            const onIterate = (r, c) => new Promise(resolve => {
+                iterButton.addEventListener('click', resolve);
+                highlightMainGrid = [r, c];
+                refreshTable();
+                if (!continueTipShown) {
+                    continueTipShown = true;
+                    showToast("Hit 'continue' repeatedly until puzzle is solved", 6000);
+                }
+            });
+            mainGridCandidateOutput = generateEmptyMainCandidateOutput();
+            let puzzleValid = await solve(firstRow, firstColumn, lastRow, lastColumn, mainGridOutput, mainGridCandidateOutput, onIterate);
+            if (puzzleValid) {
+                refreshTable();
+                console.log("solution found");
+                showToast("solution found", 3000);
+                mainGridOutput = generateEmptyMainGridOutput();
+                mainGridCandidateOutput = generateEmptyMainCandidateOutput();
+            } else {
+                console.log("solution NOT found!");
+                showToast("solution NOT found!", 3000);
+                mainGridOutput = generateEmptyMainGridOutput();
+                mainGridCandidateOutput = generateEmptyMainCandidateOutput();
+                refreshTable();
+            }
+
+            startFlash();
+            
+            solveButton.style.display = 'block';
+            iterButton.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
