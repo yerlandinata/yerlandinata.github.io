@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>6x6 Square Table</title>
+    <title>6x6 ABC End View</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -64,6 +64,7 @@
         }
 
         let highlightMainGrid = null;
+        let highlightMainGridColor = 'yellow';
 
         let mainGridCandidateOutput = generateEmptyMainCandidateOutput();
 
@@ -191,7 +192,7 @@
                     if (highlightMainGrid != null) {
                         let [r, c] = highlightMainGrid;
                         if (rowIndex == r && colIndex == c) {
-                            cellElement.classList.add('highlight');
+                            cellElement.classList.add(`highlight-${highlightMainGridColor}`);
                         }
                     }
                     cellElement.textContent = cellData;
@@ -311,9 +312,10 @@
             solveButton.style.display = 'none';
             iterButton.style.display = 'block';
             let continueTipShown = false;
-            const onIterate = (r, c) => new Promise(resolve => {
+            const onIterate = (r, c, color) => new Promise(resolve => {
                 iterButton.addEventListener('click', resolve);
                 highlightMainGrid = [r, c];
+                highlightMainGridColor = color;
                 refreshTable();
                 if (!continueTipShown) {
                     continueTipShown = true;
