@@ -67,7 +67,7 @@ class Constraints {
  * @param {string[]} rowConstraintsTail 
  * @param {string[][]} output 
  * @param {string[][][]} valids 
- * @param {(r: number, c: number) => Promise} onIteration
+ * @param {(r: number, c: number, color: string) => Promise} onIteration
  * @returns {boolean}
  */
 async function solve(colConstraintsHead, rowConstraintsHead, colConstraintsTail, rowConstraintsTail, output, valids, onIteration) {
@@ -99,10 +99,14 @@ async function solve(colConstraintsHead, rowConstraintsHead, colConstraintsTail,
             } else if (r == 1) {
                 if (state[0][c] == 'X') {
                     valids[r][c] = valids[r][c].filter(letter => letter == constraints.colConstraintsHead[c] || letter == "X");
+                } else if (state[0][c] != '') {
+                    valids[r][c] = valids[r][c].filter(letter => letter != constraints.colConstraintsHead[c]);
                 }
             } else if (r == 2) {
                 if (state[0][c] == 'X' && state[1][c] == 'X' ) {
                     valids[r][c] = valids[r][c].filter(letter => letter == constraints.colConstraintsHead[c] || letter == "X");
+                } else if ((state[0][c] != '' && state[0][c] != 'X') || (state[1][c] != '' && state[1][c] != 'X')) {
+                    valids[r][c] = valids[r][c].filter(letter => letter != constraints.colConstraintsHead[c]);
                 }
             }
         }
@@ -115,10 +119,14 @@ async function solve(colConstraintsHead, rowConstraintsHead, colConstraintsTail,
             } else if (r == 4) {
                 if (state[5][c] == 'X') {
                     valids[r][c] = valids[r][c].filter(letter => letter == constraints.colConstraintsTail[c] || letter == "X");
+                } else if (state[5][c] != '') {
+                    valids[r][c] = valids[r][c].filter(letter => letter != constraints.colConstraintsTail[c]);
                 }
             } else if (r == 3) {
                 if (state[5][c] == 'X' && state[4][c] == 'X' ) {
                     valids[r][c] = valids[r][c].filter(letter => letter == constraints.colConstraintsTail[c]);
+                } else if ((state[5][c] != '' && state[5][c] != 'X') || (state[4][c] != '' && state[4][c] != 'X')) {
+                    valids[r][c] = valids[r][c].filter(letter => letter != constraints.colConstraintsTail[c]);
                 }
             }
         }
@@ -131,10 +139,14 @@ async function solve(colConstraintsHead, rowConstraintsHead, colConstraintsTail,
             } else if (c == 1) {
                 if (state[r][0] == 'X') {
                     valids[r][c] = valids[r][c].filter(letter => letter == constraints.rowConstraintsHead[r] || letter == "X");
+                } else if (state[r][0] != '') {
+                    valids[r][c] = valids[r][c].filter(letter => letter != constraints.rowConstraintsHead[c]);
                 }
             } else if (c == 2) {
                 if (state[r][0] == 'X' && state[r][1] == 'X' ) {
                     valids[r][c] = valids[r][c].filter(letter => letter == constraints.rowConstraintsHead[r]);
+                } else if ((state[r][0] != '' && state[r][1] != 'X') || (state[r][1] != '' && state[r][1] != 'X')) {
+                    valids[r][c] = valids[r][c].filter(letter => letter != constraints.rowConstraintsHead[c]);
                 }
             }
         }
@@ -147,10 +159,14 @@ async function solve(colConstraintsHead, rowConstraintsHead, colConstraintsTail,
             } else if (c == 4) {
                 if (state[r][5] == 'X') {
                     valids[r][c] = valids[r][c].filter(letter => letter == constraints.rowConstraintsTail[r] || letter == "X");
+                } else if (state[r][5] != '') {
+                    valids[r][c] = valids[r][c].filter(letter => letter != constraints.rowConstraintsTail[c]);
                 }
             } else if (c == 3) {
                 if (state[r][5] == 'X' && state[r][4] == 'X' ) {
                     valids[r][c] = valids[r][c].filter(letter => letter == constraints.rowConstraintsTail[r]);
+                } else if ((state[r][5] != '' && state[r][5] != 'X') || (state[r][4] != '' && state[r][4] != 'X')) {
+                    valids[r][c] = valids[r][c].filter(letter => letter != constraints.rowConstraintsTail[c]);
                 }
             }
         }
@@ -168,13 +184,11 @@ async function solve(colConstraintsHead, rowConstraintsHead, colConstraintsTail,
             }
         }
     }
-    // for (let r = 0; r < 6; r++) {
-    //     for (let c = 0; c < 6; c++) {
-    //         output[r][c] = valids[r][c].join();
-    //     }
-    // }
 
-
+    /**
+     * 
+     * @returns {number}
+     */
     function findMinValid() {
         let minValid = Number.MAX_VALUE;
         let found = null;
@@ -188,9 +202,6 @@ async function solve(colConstraintsHead, rowConstraintsHead, colConstraintsTail,
                     found = [r, c];
                 }
             }
-        }
-        if (minValid == 0) {
-            return null;
         }
         return found;
     }
@@ -362,13 +373,18 @@ async function solve(colConstraintsHead, rowConstraintsHead, colConstraintsTail,
             return depth == 36;
         }
         let [r, c] = next;
+        if (valids[r][c].length == 0) {
+            console.log("found invalid cell: ", r, c);
+            await onIteration(r, c, 'red');
+            return false;
+        }
         for (let letter of valids[r][c]) {
             setLetter(r, c, letter);
-            await onIteration(r, c);
+            await onIteration(r, c, 'yellow');
             if (!(await backtrack(depth + 1))) {
                 console.log("back tracking!");
                 unsetLetter(r, c);
-                await onIteration(r, c);
+                await onIteration(r, c, 'red');
             } else {
                 console.log("valid!");
                 return true;

@@ -45,8 +45,12 @@ body {
     color: white;
 }
 
-.table-cell.highlight {
+.table-cell.highlight-yellow {
     border: 2px solid yellow;
+}
+
+.table-cell.highlight-red {
+    border: 2px solid red;
 }
 
 .table-cell.solution {
@@ -94,7 +98,7 @@ body {
 
 @keyframes flashBorder {
     from {
-        outline: 2px solid red;
+        outline: 2px solid yellow;
     }
 
     to {
